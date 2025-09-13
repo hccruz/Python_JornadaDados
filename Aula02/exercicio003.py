@@ -1,3 +1,5 @@
+# Desenvolva um programa que multiplique dois números fornecidos pelo usuário e mostre o resultado.
+
 # Digitar um número inteiro
 num = int(input("Digite um número inteiro: "))
 

@@ -1,3 +1,5 @@
+#Escreva um programa que soma dois números inteiros inseridos pelo usuário.
+
 # Digite o primeiro número
 num1 = int(input("Digite o primeiro número: "))
 

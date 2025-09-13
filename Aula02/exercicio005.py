@@ -1,3 +1,5 @@
+# Escreva um programa que calcule o quadrado de um número fornecido pelo usuário.
+
 # Digitar um número inteiro
 num = int(input("Digite um número inteiro: "))
 

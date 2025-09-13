@@ -1,3 +1,5 @@
+# Faça um programa que peça dois números inteiros e imprima a divisão inteira do primeiro pelo segundo.
+
 # Digitar o primeiro número inteiro
 first_num1= input("Digite o primeiro número inteiro: ")
 
