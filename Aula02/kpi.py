@@ -70,7 +70,7 @@ bonus = bonus.replace(',', '.')
 try:
     bonus_usuario = bonus.isspace()
     if bonus_usuario:
-        raise ValueError('O bônus não pode conter apenas espaços em branco.')
+        raise ValueError('O bônus não pode conter espaços em branco.')
 except ValueError as e:    
     print(e)
     exit()
@@ -95,8 +95,8 @@ except ValueError as e:
     print(e)
     exit()
 
-# Calcule o salário total.
-salario_total = BONUS_FIXO + salario * bonus
+# Calcule bônus recebido.
+bonus_recebido = salario * bonus
 
 # Exiba o resultado.
-print(f'Olá {nome}, o seu salário atual é de R${salario_total:.2f}.')
+print(f'Olá {nome}, o seu salário atual é de R${salario:.2f} e seu bônus final é de R${bonus_recebido:.2f}.')
