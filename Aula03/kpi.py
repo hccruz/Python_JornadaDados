@@ -71,7 +71,7 @@ while True:
         print(e)
 
 # Calcule bônus recebido.
-bonus_recebido = salario * bonus
+bonus_recebido = BONUS_FIXO + salario * bonus
 
 # Exiba o resultado.
 print(f'Olá {nome}, o seu salário atual é de R${salario:.2f} e seu bônus final é de R${bonus_recebido:.2f}.')
