@@ -2,8 +2,29 @@
 
 # Calcular o salário total de um usuário com base no salário e bônus fornecidos
 
-def calcular_valor(valor: str):
-    pass
+def validar_valor(texto: str) -> float:
+    # Entre com o salário do usuário.     
+    while True:
+        
+        try:
+            valor = input(f'Digite o {texto} do usuário: ')
+
+            valor = valor.replace(',', '.')
+            
+            valor = float(valor)
+        except ValueError as e:    
+            print(f'O {texto} não pode conter letras ou caracteres inválidos.')
+            continue
+
+        try:
+            if valor < 0:
+                raise ValueError(f'O {texto} não pode ser negativo.')
+            elif valor == 0:
+                raise ValueError(f'O {texto} não pode ser zero.')
+            else:
+                return valor
+        except ValueError as e:    
+            print(e)
 
 
 # Constante do bônus fixo
@@ -27,55 +48,12 @@ while True:
     except ValueError as e:    
         print(e)
 
-# Entre com o salário do usuário.   
-while True:
-    
-    try:
-        salario = input('Digite o salário do usuário: ')
-
-        salario = salario.replace(',', '.')
-        
-        salario = float(salario)
-    except ValueError as e:    
-        print('O salário não pode conter letras ou caracteres inválidos.')
-        continue
-
-    try:
-        if salario < 0:
-            raise ValueError('O salário não pode ser negativo.')
-        elif salario == 0:
-            raise ValueError('O salário não pode ser zero.')
-        else:
-            break
-    except ValueError as e:    
-        print(e)
-
-
-# Entre com o bônus do usuário.
-while True:
-    
-    try:
-        bonus = input('Digite o bônus do usuário: ')
-
-        bonus = bonus.replace(',', '.')
-        
-        bonus = float(bonus)
-    except ValueError as e:    
-        print('O bônus não pode conter letras ou caracteres inválidos.')
-        continue
-
-    try:
-        if bonus < 0:
-            raise ValueError('O bônus não pode ser negativo.')
-        elif bonus == 0:
-            raise ValueError('O bônus não pode ser zero.')
-        else:
-            break
-    except ValueError as e:    
-        print(e)
-
 # Calcule bônus recebido.
-bonus_recebido = BONUS_FIXO + salario * bonus
+salario_validado = validar_valor('salário')
+
+bonus_validado = validar_valor('bônus')
+    
+bonus_recebido = BONUS_FIXO + salario_validado * bonus_validado
 
 # Exiba o resultado.
-print(f'Olá {nome}, o seu salário atual é de R${salario:.2f} e seu bônus final é de R${bonus_recebido:.2f}.')
+print(f'Olá {nome}, o seu salário atual é de R${salario_validado:.2f} e seu bônus final é de R${bonus_recebido:.2f}.')
