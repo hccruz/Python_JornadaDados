@@ -18,11 +18,13 @@ def ler_csv(nome_arquivo_csv: str) -> list[dict]:
     return lista
 
 
-def calcular_vendas_categoria(dados):
+def calcular_vendas_categoria(dados: list) -> dict:
     vendas_por_categoria = {}
-    for categoria in dados:
-        total_vendas = sum(int(item['Quantidade']) * int(item['Venda']) for item in itens)
-        vendas_por_categoria[categoria] = total_vendas
+    for dado in dados:
+        if dado.get('Categoria') in vendas_por_categoria.keys():
+            vendas_por_categoria[dado.get('Categoria')] += int(dado.get('Quantidade')) * int(dado.get('Venda'))
+        else:
+            vendas_por_categoria[dado.get('Categoria')] = int(dado.get('Quantidade')) * int(dado.get('Venda'))
     
     return vendas_por_categoria
 
@@ -34,6 +36,7 @@ vendas_itens = ler_csv(path_arquivo)
 print(vendas_itens)
 
 vendas_categoria = calcular_vendas_categoria(vendas_itens)
-for categoria, total in vendas_categoria:
+
+for categoria, total in vendas_categoria.items():
     print(f'{categoria}: ${total}')
 
